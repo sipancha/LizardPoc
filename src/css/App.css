@@ -1,0 +1,11 @@
+.App-Container{
+    width:500px;
+    margin:auto;
+    border:2px solid gray;
+    padding:10px;
+}
+.App-Heading{
+    padding:20px 0;
+    color: blue;
+    
+}

@@ -1,0 +1,11 @@
+.homePageMenuContainer{
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+}
+.centerViewContainer{
+   
+}
+.centerViewHome{
+    padding: 80px 30px;
+}

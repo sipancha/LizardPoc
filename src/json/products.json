@@ -1,0 +1,19 @@
+{
+    "products":[
+        {
+            "name":"sibi",
+            "price":50,
+            "id":1
+        },
+        {
+            "name":"anr",
+            "price":100,
+            "id":2
+        },
+        {
+            "name":"muna",
+            "price":200,
+            "id":3
+        }
+    ]
+}

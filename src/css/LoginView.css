@@ -1,0 +1,16 @@
+.txt_align_center{
+    text-align: center;
+}
+.userName_label{
+    
+    padding-right: 15px
+}
+.userName_pwd{
+    padding-right: 20px
+}
+.user_submit{
+    padding: 10px 0 0 35px
+}
+.user_reset_button{
+    margin-left: 10px;
+}
