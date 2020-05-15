@@ -5,7 +5,7 @@ import addUser from "./../service/addUser"
 import {SIGNINFORM_SUCCESS_MSG, SUCCESS_GREEN, FAILURE_RED, 
     SIGNINFORM_ERROR_MSG  } from "./../../constants/action-types"
   
-  import {successFailurePopUp} from "./../../actions/index"
+import {successFailurePopUp} from "./../../actions/index"
 
 function* workerSaga_addUser(action) {
     //alert("worker")

@@ -5,22 +5,22 @@ import getUser from "./../service/getUser"
 import {FAILURE_RED, LOGIN_ERROR_MSG, LOGIN_STATUS_CHANGE_EVENT
   } from "./../../constants/action-types"
   
-  import {successFailurePopUp} from "./../../actions/index"
+import {successFailurePopUp} from "./../../actions/index"
+
+import {loginConditionCheck} from "./../helper/index"
 
 function* workerSaga_getUser(action) {
   
     try {
-      const payload = yield call(getUser, action.payload);
-      const {userName, userPwd} = action.payload
-      const {data} = payload
-       
-      if(data[0] && data[0].userName===userName && data[0].userPassword===userPwd){
-        yield put({type : LOGIN_STATUS_CHANGE_EVENT, payload : data[0] })
+      const response = yield call(getUser, action.payload);
+                  
+      if(loginConditionCheck(response,action.payload)){
+        yield put({type : LOGIN_STATUS_CHANGE_EVENT, payload : response.data[0] })
       }else{
         yield put(successFailurePopUp({msg:LOGIN_ERROR_MSG, color:FAILURE_RED }))
       }
     } catch (e) {
-      yield put(successFailurePopUp({msg:LOGIN_ERROR_MSG, color:FAILURE_RED }))
+      yield put(successFailurePopUp({msg:"Oops! Something went wrong in API", color:FAILURE_RED }))
       
     }
     }
