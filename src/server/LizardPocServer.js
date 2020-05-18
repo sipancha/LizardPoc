@@ -1,8 +1,10 @@
-var express = require('express');
-var app = express();
-var db = require("./dbConnection")
+const express = require('express');
+const app = express();
+require("./../database/dbConnection")
 
-var bodyParser = require('body-parser');
+const signInModel = require("./../database/model/signInModel")
+
+const bodyParser = require('body-parser');
 
 
 app.use(bodyParser.json()); // for parsing application/json
@@ -10,31 +12,27 @@ app.use(bodyParser.json()); // for parsing application/json
 
 app.get('/getUser', function (req, res) {
        console.log(req.query)
-    db.get().collection('Users').find(req.query).toArray((findErr, result)=>{
-        if (findErr) throw findErr;
-        
-        res.send(result)
-        
-    });
+       signInModel.signInFormModel.find(req.query, (err,response)=>{
+            if(err) res.send(err);
+            res.send(response)
+       })
 });
 
 app.post('/addUser', function (req, res) {
     
    console.log(req.body) 
 
-    db.get().collection('Users').insert(req.body, (findErr, result)=>{
-        if (findErr) throw findErr;
-        
-        res.send(result)
-        
-    });
+   signInModel.signInFormModelObj(req.body).save(err =>{
     
+      if(err) res.send(err);
     
+      res.send("User created successfully!");
+   })
+   
 });
 
 
-db.connect(() => {
-    app.listen(5000, function (){
-        console.log(`Listening`);
-    });
+
+app.listen(5000, function (){
+    console.log(`Listening`);
 });

@@ -13,7 +13,7 @@ function* workerSaga_getUser(action) {
   
     try {
       const response = yield call(getUser, action.payload);
-                  
+            
       if(loginConditionCheck(response,action.payload)){
         yield put({type : LOGIN_STATUS_CHANGE_EVENT, payload : response.data[0] })
       }else{
